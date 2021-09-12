@@ -150,6 +150,6 @@
 | Attributes | Description | Comments |
 | ----------- | ----------- | ----------- |
 | REPORT_OUTCOME_TYPE_ID | Primary Key (Primary Key) for REPORT_OUTCOME entity | PRIMARY KEY, NOT NULL |
-| REPORT_OUTCOME_TYPE_NAME | Report outcomes can either be 'POSITIVE' or 'NEGATIVE' | x|
+| REPORT_OUTCOME_TYPE_NAME | Report outcomes can either be 'POSITIVE' or 'NEGATIVE' | |
 | CREATED_DATE | The created_time timestamp when a tuple in the REPORT_OUTCOME entity was created | |
 | UPDATED_DATE | The updated_time timestamp when a tuple in the REPORT_OUTCOME entity was updated | |
