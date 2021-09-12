@@ -153,3 +153,21 @@
 | REPORT_OUTCOME_TYPE_NAME | Report outcomes can either be 'POSITIVE' or 'NEGATIVE' | |
 | CREATED_DATE | The created_time timestamp when a tuple in the REPORT_OUTCOME entity was created | |
 | UPDATED_DATE | The updated_time timestamp when a tuple in the REPORT_OUTCOME entity was updated | |
+
+---
+
+## Components of an Entity Relation Mapping (ERM)
+
+| Entity | Relationship | Connectivity | Entity |
+| ----------- | ----------- | ----------- | ----------- |
+| EMPLOYEE | can have | 1:M | SYMPTOM |
+| EMPLOYEE | has | 1:1 | EMPLOYEE_HEALTH_STATUS |
+| EMPLOYEE | can attend | M:N | MEETING |
+| EMPLOYEE_HEALTH_STATUS | can attend | 1:1 | HEALTH_STATE |
+| EMPLOYEE | has an instance of | 1:1 | APPLICATION |
+| EMPLOYEE | can undergo | 1:M | TEST |
+| TEST | is in | M:N | TEST_LOCATION |
+| TEST | generates | 1:1 | REPORT |
+| REPORT | has | 1:1 | REPORT_OUTCOME |
+| APPLICATION | generates | 1:M | NOTIFICATION |
+| NOTIFICATION | has | 1:M | NOTIFICATION_TYPE |
