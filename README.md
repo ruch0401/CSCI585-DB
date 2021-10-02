@@ -5,3 +5,4 @@
 ## HW Solutions
 
 - [HW1](HW1/README1.md) - Creating an Entity-Relationship Diagram
+- [HW2](HW2/README1.md) - SQL Queries
