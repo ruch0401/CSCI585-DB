@@ -1,4 +1,4 @@
-# CSCI585-DB
+# CSCI585-DB (HW1)
 
 ### Submitted By: Ruchit Bhardwaj
 ### USC ID: 1111-4177-99
