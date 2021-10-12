@@ -3,12 +3,14 @@ set search_path to 'covid-19-tracing-application';
 
 -- Q2 (1 point). Write a query to output the most-self-reported symptom.
 SELECT symptom_id,
-       COUNT(symptom_id) AS number_of_times_symptom_was_reported
-FROM   symptom
+       COUNT(symptom_id) AS most_reported_symptom
+FROM symptom
 GROUP  BY symptom_id
-ORDER  BY COUNT(symptom_id) DESC;
+HAVING COUNT(symptom_id) >=
+  (SELECT COUNT(symptom_id)
+   FROM symptom
+   GROUP BY symptom_id
+   ORDER BY count(symptom_id) DESC
+   LIMIT 1);
 
--- The query returns a result-set as a count of how many times has a particular symptom been reported.
--- Limiting an output to just the top row (after it has been sorted in descending order based on count(symptom_id)
--- can lead to incorrect data if the top self-reported symptom is more than one. Hence, I am generating a report to
--- identify the frequency of each self-reported symptom.
+-- The query returns the most self-reported symptom

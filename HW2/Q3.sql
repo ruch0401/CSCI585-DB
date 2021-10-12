@@ -2,19 +2,27 @@
 set search_path to 'covid-19-tracing-application';
 
 -- Q3 (1 point). Write a query to output the 'sickest' floor.
-SELECT e.floor_number,
-       COUNT(e.floor_number) AS NUMBER_OF_PATIENTS_SICK_ON_THIS_FLOOR
-FROM employee e
-JOIN
-  (SELECT *
-   FROM health_status
-   WHERE status in ('SICK',
-                    'HOSPITALIZED')) AS hs ON (e.employee_id = hs.employee_id)
-GROUP BY e.floor_number
-ORDER BY COUNT(e.floor_number) DESC;
+DROP TABLE IF EXISTS t1;
+CREATE TEMP TABLE t1 AS
+  (SELECT e.floor_number,
+          COUNT(e.floor_number) AS SICKEST_FLOOR
+   FROM employee e
+   JOIN
+     (SELECT *
+      FROM health_status
+      WHERE status in ('SICK',
+                       'HOSPITALIZED')) AS hs ON (e.employee_id = hs.employee_id)
+   GROUP BY e.floor_number
+   ORDER BY COUNT(e.floor_number) DESC);
+
+SELECT *
+FROM t1
+WHERE t1.SICKEST_FLOOR >=
+    (SELECT SICKEST_FLOOR
+     FROM t1
+     ORDER BY SICKEST_FLOOR DESC
+     LIMIT 1);
 
 
--- The query returns a result-set as a count of how many patients were reported/diagnosed sick on each floor.
--- Limiting an output to just the top row (after it has been sorted in descending order based on count(e.floor_numbe)
--- can lead to incorrect data if there are same number of employees that have been reported sick on 2 different floors.
--- Hence, I am generating a report to identify the number of sick employees on each floor.
+-- A temp table is created that creates a report of the floor number and how many employees are sick on that particular floor
+-- This temp table is then used to find the floor(s) with the maximum number of sick employees a.k.a. sickest floor
