@@ -10,13 +10,13 @@ CREATE TEMP TABLE IF NOT EXISTS A AS
           s.symptom_id
    FROM employee e
    JOIN symptom s ON e.employee_id = s.employee_id
-  )
+  );
 
 CREATE TEMP TABLE IF NOT EXISTS S AS
   (SELECT DISTINCT s.symptom_id
    FROM symptom s
    ORDER BY s.symptom_id
-  )
+  );
 
 WITH employeeswithoutallsymptoms AS
   (SELECT name,

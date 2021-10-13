@@ -32,8 +32,9 @@ WHERE date_reported
 	AND '2020-09-30'::TIMESTAMP::date;
 
 -- number of positive cases.
-SELECT COUNT(*) AS TOTAL_NUMBER_OF_PEOPLE_WHO_SELF_REPORTED_SYMPTOMS
-FROM symptom
-WHERE date_reported
-	BETWEEN '2020-04-13'::TIMESTAMP::date
-	AND '2020-09-30'::TIMESTAMP::date;
+SELECT COUNT(*) AS TOTAL_POSITIVE_CASES
+FROM test
+WHERE test_date
+  BETWEEN '2020-04-13'::TIMESTAMP::date
+  AND '2020-09-30'::TIMESTAMP::date
+    AND test_result = 'POSITIVE';

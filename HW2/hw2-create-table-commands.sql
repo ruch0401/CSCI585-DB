@@ -1,11 +1,10 @@
--- DB application used = PostgreSQL
-set search_path to 'covid-19-tracing-application';
+set search_path to 'covid-19-tracing-application-3';
 
 CREATE TABLE IF NOT EXISTS "employee" (
   "employee_id" INTEGER NOT NULL,
   "name" TEXT NOT NULL,
   "office_number" INTEGER NOT NULL,
-  "floor_number" INTEGER NOT NULL,
+  "floor_number" INTEGER NOT NULL CHECK (floor_number >= 1 AND floor_number <= 10),
   "phone_number" TEXT NOT NULL,
   "email" TEXT NOT NULL,
   PRIMARY KEY ("employee_id")
@@ -26,8 +25,8 @@ CREATE TABLE IF NOT EXISTS "meeting" (
   "meeting_id" INTEGER NOT NULL,
   "employee_id" INTEGER NOT NULL,
   "room_number" INTEGER NOT NULL,
-  "floor_number" INTEGER NOT NULL,
-  "meeting_start_time" INTEGER NOT NULL,
+  "floor_number" INTEGER NOT NULL CHECK (floor_number >= 1 AND floor_number <= 10),
+  "meeting_start_time" INTEGER NOT NULL CHECK (meeting_start_time <= 23 AND meeting_start_time >= 0),
   PRIMARY KEY ("meeting_id"),
   CONSTRAINT "FK_Meeting.meeting_id"
     FOREIGN KEY ("meeting_id")
@@ -39,7 +38,7 @@ CREATE TABLE IF NOT EXISTS "test" (
   "employee_id" INTEGER NOT NULL,
   "location" TEXT NOT NULL,
   "test_date" TIMESTAMP NOT NULL,
-  "test_time" INTEGER NOT NULL,
+  "test_time" INTEGER NOT NULL CHECK (test_time <= 23 AND test_time >= 0),
   "test_result" TEXT NOT NULL,
   PRIMARY KEY ("test_id"),
   CONSTRAINT "FK_Test.test_id"
@@ -51,7 +50,7 @@ CREATE TABLE IF NOT EXISTS "scan" (
   "scan_id" INTEGER NOT NULL,
   "employee_id" INTEGER NOT NULL,
   "scan_date" TIMESTAMP NOT NULL,
-  "scan_time" INTEGER NOT NULL,
+  "scan_time" INTEGER NOT NULL CHECK (scan_time <= 23 AND scan_time >= 0),
   "temperature" INTEGER NOT NULL,
   PRIMARY KEY ("scan_id"),
   CONSTRAINT "FK_Scan.scan_id"
@@ -92,49 +91,49 @@ CREATE TABLE IF NOT EXISTS "health_status" (
       REFERENCES "employee"("employee_id")
 );
 
--- INSERT data in EMPLOYEE table
-INSERT INTO employee VALUES (1, 'Alayna Pearson', 1, 66, '213-200-6560', 'alayna.pearson@gmail.com');
-INSERT INTO employee VALUES (2, 'Reese Hunt', 5, 48, '213-201-4288', 'reese.hunt@gmail.com');
-INSERT INTO employee VALUES (3, 'Julissa Coffey', 1, 98, '213-202-8777', 'julissa.coffey@gmail.com');
-INSERT INTO employee VALUES (4, 'Sophia Horne', 6, 89, '213-203-5805', 'sophia.horne@gmail.com');
-INSERT INTO employee VALUES (5, 'Thomas Horton', 8, 10, '213-204-5953', 'thomas.horton@gmail.com');
-INSERT INTO employee VALUES (6, 'Hamza Kane', 10, 76, '213-206-8302', 'hamza.kane@gmail.com');
-INSERT INTO employee VALUES (7, 'Frederick Pratt', 6, 93, '213-207-9426', 'frederick.pratt@gmail.com');
-INSERT INTO employee VALUES (8, 'Makayla Nixon', 6, 87, '213-209-1358', 'makayla.nixon@gmail.com');
-INSERT INTO employee VALUES (9, 'Joaquin Barajas', 1, 21, '213-210-9283', 'joaquin.barajas@gmail.com');
-INSERT INTO employee VALUES (10, 'Laura Adams', 6, 62, '213-213-5623', 'laura.adams@gmail.com');
-INSERT INTO employee VALUES (11, 'Rolando Bridges', 2, 100, '213-215-4919', 'rolando.bridges@gmail.com');
-INSERT INTO employee VALUES (12, 'Carmen Rasmussen', 5, 47, '213-216-8243', 'carmen.rasmussen@gmail.com');
-INSERT INTO employee VALUES (13, 'Juliet Franco', 8, 36, '213-217-1970', 'juliet.franco@gmail.com');
-INSERT INTO employee VALUES (14, 'Ivy Compton', 1, 63, '213-219-2722', 'ivy.compton@gmail.com');
-INSERT INTO employee VALUES (15, 'Santino Brown', 8, 46, '213-220-2484', 'santino.brown@gmail.com');
-INSERT INTO employee VALUES (16, 'Bianca Stanton', 8, 59, '213-221-7427', 'bianca.stanton@gmail.com');
-INSERT INTO employee VALUES (17, 'Clinton Wyatt', 1, 99, '213-222-6001', 'clinton.wyatt@gmail.com');
-INSERT INTO employee VALUES (18, 'Armando Gilmore', 10, 4, '213-223-7351', 'armando.gilmore@gmail.com');
-INSERT INTO employee VALUES (19, 'Misael Gaines', 8, 74, '213-224-2710', 'misael.gaines@gmail.com');
-INSERT INTO employee VALUES (20, 'Mara Fitzgerald', 5, 41, '213-225-9541', 'mara.fitzgerald@gmail.com');
+-- INSERT data in EMPLOYEE table (ID, name, office number, floor number, phone number, email address )
+INSERT INTO employee VALUES (1, 'Alayna Pearson', 1, 6, '213-200-6560', 'alayna.pearson@gmail.com');
+INSERT INTO employee VALUES (2, 'Reese Hunt', 5, 8, '213-201-4288', 'reese.hunt@gmail.com');
+INSERT INTO employee VALUES (3, 'Julissa Coffey', 1, 8, '213-202-8777', 'julissa.coffey@gmail.com');
+INSERT INTO employee VALUES (4, 'Sophia Horne', 6, 9, '213-203-5805', 'sophia.horne@gmail.com');
+INSERT INTO employee VALUES (5, 'Thomas Horton', 8, 1, '213-204-5953', 'thomas.horton@gmail.com');
+INSERT INTO employee VALUES (6, 'Hamza Kane', 10, 7, '213-206-8302', 'hamza.kane@gmail.com');
+INSERT INTO employee VALUES (7, 'Frederick Pratt', 6, 3, '213-207-9426', 'frederick.pratt@gmail.com');
+INSERT INTO employee VALUES (8, 'Makayla Nixon', 6, 7, '213-209-1358', 'makayla.nixon@gmail.com');
+INSERT INTO employee VALUES (9, 'Joaquin Barajas', 1, 1, '213-210-9283', 'joaquin.barajas@gmail.com');
+INSERT INTO employee VALUES (10, 'Laura Adams', 6, 2, '213-213-5623', 'laura.adams@gmail.com');
+INSERT INTO employee VALUES (11, 'Rolando Bridges', 2, 6, '213-215-4919', 'rolando.bridges@gmail.com');
+INSERT INTO employee VALUES (12, 'Carmen Rasmussen', 5, 4, '213-216-8243', 'carmen.rasmussen@gmail.com');
+INSERT INTO employee VALUES (13, 'Juliet Franco', 8, 3, '213-217-1970', 'juliet.franco@gmail.com');
+INSERT INTO employee VALUES (14, 'Ivy Compton', 1, 3, '213-219-2722', 'ivy.compton@gmail.com');
+INSERT INTO employee VALUES (15, 'Santino Brown', 8, 6, '213-220-2484', 'santino.brown@gmail.com');
+INSERT INTO employee VALUES (16, 'Bianca Stanton', 8, 9, '213-221-7427', 'bianca.stanton@gmail.com');
+INSERT INTO employee VALUES (17, 'Clinton Wyatt', 1, 9, '213-222-6001', 'clinton.wyatt@gmail.com');
+INSERT INTO employee VALUES (18, 'Armando Gilmore', 1, 4, '213-223-7351', 'armando.gilmore@gmail.com');
+INSERT INTO employee VALUES (19, 'Misael Gaines', 8, 7, '213-224-2710', 'misael.gaines@gmail.com');
+INSERT INTO employee VALUES (20, 'Mara Fitzgerald', 5, 1, '213-225-9541', 'mara.fitzgerald@gmail.com');
 
--- INSERT data in MEETING table
-INSERT INTO meeting VALUES (1, 10, 848, 87, 9);
-INSERT INTO meeting VALUES (2, 1, 561, 66, 14);
-INSERT INTO meeting VALUES (3, 2, 882, 48, 17);
-INSERT INTO meeting VALUES (4, 3, 812, 98, 9);
-INSERT INTO meeting VALUES (5, 4, 986, 89, 8);
-INSERT INTO meeting VALUES (6, 5, 728, 10, 14);
-INSERT INTO meeting VALUES (7, 6, 102, 76, 8);
-INSERT INTO meeting VALUES (8, 7, 736, 44, 8);
-INSERT INTO meeting VALUES (9, 8, 687, 93, 14);
-INSERT INTO meeting VALUES (10, 20, 514, 21, 16);
-INSERT INTO meeting VALUES (11, 9, 437, 62, 11);
-INSERT INTO meeting VALUES (12, 11, 294, 100, 12);
-INSERT INTO meeting VALUES (13, 12, 449, 47, 11);
-INSERT INTO meeting VALUES (14, 13, 130, 36, 14);
-INSERT INTO meeting VALUES (15, 14, 322, 63, 9);
-INSERT INTO meeting VALUES (16, 15, 763, 46, 15);
-INSERT INTO meeting VALUES (17, 16, 616, 59, 15);
-INSERT INTO meeting VALUES (18, 17, 101, 99, 17);
-INSERT INTO meeting VALUES (19, 18, 789, 4, 9);
-INSERT INTO meeting VALUES (20, 19, 456, 74, 15);
+-- INSERT data in MEETING table (meeting ID, employee ID, room number, floor number, meeting start time)
+INSERT INTO meeting VALUES (1, 10, 848, 6, 9);
+INSERT INTO meeting VALUES (2, 1, 561, 8, 14);
+INSERT INTO meeting VALUES (3, 2, 882, 8, 17);
+INSERT INTO meeting VALUES (4, 3, 812, 9, 9);
+INSERT INTO meeting VALUES (5, 4, 986, 1, 8);
+INSERT INTO meeting VALUES (6, 5, 728, 7, 14);
+INSERT INTO meeting VALUES (7, 6, 102, 3, 8);
+INSERT INTO meeting VALUES (8, 7, 736, 7, 8);
+INSERT INTO meeting VALUES (9, 8, 687, 1, 14);
+INSERT INTO meeting VALUES (10, 20, 514, 2, 16);
+INSERT INTO meeting VALUES (11, 9, 437, 6, 11);
+INSERT INTO meeting VALUES (12, 11, 294, 4, 12);
+INSERT INTO meeting VALUES (13, 12, 449, 3, 11);
+INSERT INTO meeting VALUES (14, 13, 130, 3, 14);
+INSERT INTO meeting VALUES (15, 14, 322, 6, 9);
+INSERT INTO meeting VALUES (16, 15, 763, 9, 15);
+INSERT INTO meeting VALUES (17, 16, 616, 9, 15);
+INSERT INTO meeting VALUES (18, 17, 101, 4, 17);
+INSERT INTO meeting VALUES (19, 18, 789, 7, 9);
+INSERT INTO meeting VALUES (20, 19, 456, 1, 15);
 
 -- INSERT data in NOTIFICATION table (notificationID, employeeId, notificationDate, notificationType)
 INSERT INTO notification VALUES (1, 7, '2020-11-25 21:56:22.834', 'OPTIONAL');
@@ -264,88 +263,84 @@ INSERT INTO health_status VALUES (14, 13, '2020-02-11 16:43:44.991', 'HOSPITALIZ
 INSERT INTO health_status VALUES (15, 14, '2020-06-17 20:18:04.634', 'WELL');
 INSERT INTO health_status VALUES (16, 15, '2020-10-25 04:47:17.072', 'SICK');
 INSERT INTO health_status VALUES (17, 16, '2020-11-08 19:24:17.385', 'HOSPITALIZED');
-INSERT INTO health_status VALUES (18, 17, '2020-08-30 19:05:40.472', 'WELL');
-INSERT INTO health_status VALUES (19, 18, '2020-07-03 00:27:07.718', 'SICK');
-INSERT INTO health_status VALUES (20, 19, '2020-02-05 15:25:42.289', 'HOSPITALIZED');
+
 
 -- Q2 (1 point). Write a query to output the most-self-reported symptom.
 SELECT symptom_id,
-       COUNT(symptom_id) AS number_of_times_symptom_was_reported
-FROM   symptom
+       COUNT(symptom_id) AS most_reported_symptom
+FROM symptom
 GROUP  BY symptom_id
-ORDER  BY COUNT(symptom_id) DESC; 
+HAVING COUNT(symptom_id) >=
+  (SELECT COUNT(symptom_id)
+   FROM symptom
+   GROUP BY symptom_id
+   ORDER BY count(symptom_id) DESC
+   LIMIT 1);
 
 -- Q3 (1 point). Write a query to output the 'sickest' floor.
-SELECT e.floor_number,
-       COUNT(e.floor_number) AS NUMBER_OF_PATIENTS_SICK_ON_THIS_FLOOR
-FROM employee e
-JOIN
-  (SELECT *
-   FROM health_status
-   WHERE status in ('SICK',
-                    'HOSPITALIZED')) AS hs ON (e.employee_id = hs.employee_id)
-GROUP BY e.floor_number
-ORDER BY COUNT(e.floor_number) DESC;
+DROP TABLE IF EXISTS t1;
+CREATE TEMP TABLE t1 AS
+  (SELECT e.floor_number,
+          COUNT(e.floor_number) AS SICKEST_FLOOR
+   FROM employee e
+   JOIN
+     (SELECT *
+      FROM health_status
+      WHERE status in ('SICK',
+                       'HOSPITALIZED')) AS hs ON (e.employee_id = hs.employee_id)
+   GROUP BY e.floor_number
+   ORDER BY COUNT(e.floor_number) DESC);
 
--- Q4 (1 point). The management would like stats, for a given period (between start, end dates), on the following: 
--- number of scans, 
--- number of tests, 
--- number of employees who self-reported symptoms, 
--- number of positive cases. 
+SELECT *
+FROM t1
+WHERE t1.SICKEST_FLOOR >=
+    (SELECT SICKEST_FLOOR
+     FROM t1
+     ORDER BY SICKEST_FLOOR DESC
+     LIMIT 1);
+
+
+-- Q4 (1 point). The management would like stats, for a given period (between start, end dates), on the following:
+-- number of scans,
+-- number of tests,
+-- number of employees who self-reported symptoms,
+-- number of positive cases.
 -- Write queries to output these.
 
--- number of scans
-SELECT employee_id,
-       scan_date::date,
-       temperature
+-- Note: The start and end dates have been hardcoded and chosen at random to show data that conforms within that date range
+
+-- total number of scans
+SELECT COUNT(*) as TOTAL_NUMBER_OF_SCANS
 FROM scan
-WHERE scan_date BETWEEN '2020-04-13'::TIMESTAMP::date AND '2020-09-30'::TIMESTAMP::date;
+WHERE scan_date
+    BETWEEN '2020-04-13'::TIMESTAMP::date
+    AND '2020-09-30'::TIMESTAMP::date;
 
 -- total number of tests
-SELECT employee_id,
-       test_date::date,
-       test_result
+SELECT COUNT(*) as TOTAL_NUMBER_OF_TESTS
 FROM test
-WHERE test_date 
-  BETWEEN '2020-04-13'::TIMESTAMP::date 
-  AND '2020-09-30'::TIMESTAMP::date;
+WHERE test_date
+	BETWEEN '2020-04-13'::TIMESTAMP::date
+	AND '2020-09-30'::TIMESTAMP::date;
 
 -- total number of people who self-reported the symptoms
-SELECT employee_id,
-       date_reported,
-       symptom_id
+SELECT COUNT(*) AS TOTAL_NUMBER_OF_PEOPLE_WHO_SELF_REPORTED_SYMPTOMS
 FROM symptom
-WHERE date_reported 
-  BETWEEN '2020-04-13'::TIMESTAMP::date 
-  AND '2020-09-30'::TIMESTAMP::date;
+WHERE date_reported
+	BETWEEN '2020-04-13'::TIMESTAMP::date
+	AND '2020-09-30'::TIMESTAMP::date;
 
 -- number of positive cases.
-SELECT *
+SELECT COUNT(*) AS TOTAL_POSITIVE_CASES
 FROM test
-WHERE test_date 
-  BETWEEN '2020-04-13'::TIMESTAMP::date 
+WHERE test_date
+  BETWEEN '2020-04-13'::TIMESTAMP::date
   AND '2020-09-30'::TIMESTAMP::date
     AND test_result = 'POSITIVE';
 
 
-SELECT sym.symptom_id,
-       s.temperature,
-       t.test_result,
-       count(*)
-FROM scan s
-INNER JOIN test t ON s.employee_id = t.employee_id
-INNER JOIN symptom sym ON t.employee_id = sym.employee_id
-WHERE t.test_date 
-  BETWEEN '2020-04-13'::TIMESTAMP::date 
-  AND '2020-09-30'::TIMESTAMP::date
-  AND test_result = 'POSITIVE'
-GROUP BY sym.symptom_id,
-         s.temperature,
-         t.test_result;
-
-
--- Q5 (1 point). Create your own query! What else would you like to learn, from the data? 
--- Describe/list the question, and come up with the query to answer it. 
+-- Q5 (1 point). Create your own query! What else would you like to learn, from the data?
+-- Describe/list the question, and come up with the query to answer it.
 -- You'll get 1 extra point if your query involves table division [be sure to indicate this in your README].
 
 CREATE TEMP TABLE IF NOT EXISTS A AS
@@ -353,13 +348,13 @@ CREATE TEMP TABLE IF NOT EXISTS A AS
           s.symptom_id
    FROM employee e
    JOIN symptom s ON e.employee_id = s.employee_id
-  )
+  );
 
 CREATE TEMP TABLE IF NOT EXISTS S AS
   (SELECT DISTINCT s.symptom_id
    FROM symptom s
    ORDER BY s.symptom_id
-  )
+  );
 
 WITH employeeswithoutallsymptoms AS
   (SELECT name,
@@ -377,3 +372,6 @@ FROM A
 EXCEPT
 SELECT DISTINCT name
 FROM employeeswithoutallsymptoms;
+
+-- To verify the ID of the employee with all the symptoms
+SELECT * FROM EMPLOYEE WHERE name like '%Misael Gaines%';
