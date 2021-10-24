@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>HW3</name>
+	<gx:CascadingStyle kml:id="__managed_style_26D1D2C20B1DE622C2BB">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=d32f2f&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<width>1.5</width>
+			</LineStyle>
+			<PolyStyle>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1626A9520A1DE622C2BB">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/rpc/cc/icon?color=d32f2f&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+			</LineStyle>
+			<PolyStyle>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0B6967E01A1DE622C2BB">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1626A9520A1DE622C2BB</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_26D1D2C20B1DE622C2BB</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0C164D7DA11DE6159FCA">
+		<name>LVL</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28308,34.02165,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="00C783506B1DE6159FCB">
+		<name>RSE</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28392,34.02192,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="1C08FAE0771DE6159FCB">
+		<name>DOH</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28389,34.02009,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="28B4AF4D0A1DE6159FCB">
+		<name>EAC</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28598,34.02006,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="3956D591431DE6159FCB">
+		<name>RTH</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28668,34.02014,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="03E3B9C9871DE6159FCC">
+		<name>VSE</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28941,34.0192,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="1E579628541DE6159FCC">
+		<name>CLP</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28857,34.01919,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="20875099241DE6159FCC">
+		<name>ASC</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.2863,34.02182,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="35F74693881DE6159FCC">
+		<name>URC</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28489,34.0231,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="491A0FBA981DE6159FCC">
+		<name>JBS</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28887,34.02482,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="5B30FD6B231DE6159FCC">
+		<name>TTT</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28543,34.02054,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="66D8B9CD2D1DE6159FCC">
+		<name>UVS</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28444,34.02451,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="71180F23041DE6159FCC">
+		<name>HOM</name>
+		<styleUrl>#__managed_style_0B6967E01A1DE622C2BB</styleUrl>
+		<Point>
+			<coordinates>-118.28734,34.03275,0</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>
