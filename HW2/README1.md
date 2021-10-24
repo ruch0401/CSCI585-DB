@@ -1,4 +1,4 @@
-# CSCI585-DB (HW2)
+# CSCI585-DB (HW2 - SQL)
 
 ### Submitted By: Ruchit Bhardwaj
 ### USC ID: 1111-4177-99

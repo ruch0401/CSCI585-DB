@@ -1,4 +1,4 @@
-# CSCI585-DB (HW1)
+# CSCI585-DB (HW1 - Conceptual Entity-Relational (ER) diagram)
 
 ### Submitted By: Ruchit Bhardwaj
 ### USC ID: 1111-4177-99
