@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" type="text/css">
+    <style>
+        .map {
+            height: 800px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
+    <title>Geospatial Data Handling</title>
+</head>
+
+<body>
+    <h2>Geospatial Data Handling</h2>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+
+        localStorage.setItem('leavey', -118.28308, 34.02165);
+        console.log(localStorage.getItem('leavey'));
+
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([-118.28308, 34.02165]),
+                zoom: 16
+            })
+        });
+
+        var leavey = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([parseInt(localStorage.getItem('leavey'))]))
+                    })
+                ]
+            })
+        });
+
+        var rossier = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28392, 34.02192]))
+                    })
+                ]
+            })
+        });
+
+        var doheny = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28389, 34.02009]))
+                    })
+                ]
+            })
+        });
+
+        var alumni = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28598, 34.02006]))
+                    })
+                ]
+            })
+        });
+
+        var ronald = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28668, 34.02014]))
+                    })
+                ]
+            })
+        });
+
+        var viterbi = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28941, 34.01920]))
+                    })
+                ]
+            })
+        });
+
+        var powell = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28857, 34.01919]))
+                    })
+                ]
+            })
+        });
+
+        var annenburg = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28630, 34.02182]))
+                    })
+                ]
+            })
+        });
+
+        var religious = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28489, 34.02310]))
+                    })
+                ]
+            })
+        });
+
+        var jefferson = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28887, 34.02482]))
+                    })
+                ]
+            })
+        });
+
+        var tommy = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28543, 34.02054]))
+                    })
+                ]
+            })
+        });
+
+        var target = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28400, 34.02574]))
+                    })
+                ]
+            })
+        });
+
+        var home = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: [
+                    new ol.Feature({
+                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28734, 34.03275]))
+                    })
+                ]
+            })
+        });
+
+        map.addLayer(leavey);
+        map.addLayer(rossier);
+        map.addLayer(doheny);
+        map.addLayer(alumni);
+        map.addLayer(ronald);
+        map.addLayer(viterbi);
+        map.addLayer(powell);
+        map.addLayer(annenburg);
+        map.addLayer(religious);
+        map.addLayer(jefferson);
+        map.addLayer(tommy);
+        map.addLayer(target);
+        map.addLayer(home);
+    </script>
+</body>
+
+</html>

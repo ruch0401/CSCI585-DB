@@ -125,5 +125,69 @@
                 </outerBoundaryIs>
             </Polygon>
         </Placemark>
+        <Placemark>
+            <name>Home - Target Starbucks</name>
+            <Style>
+                <LineStyle>
+                    <color>fff8ff2e</color>
+                    <width>3</width>
+                </LineStyle>
+            </Style>
+            <LineString>
+                <extrude>1</extrude>
+                <tessellate>1</tessellate>
+                <coordinates>
+                    -118.28734,34.03275,0,-118.284,34.02574,0
+                </coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Home - Jefferson Parking</name>
+            <Style>
+                <LineStyle>
+                    <color>fff8ff2e</color>
+                    <width>3</width>
+                </LineStyle>
+            </Style>
+            <LineString>
+                <extrude>1</extrude>
+                <tessellate>1</tessellate>
+                <coordinates>
+                    -118.28734,34.03275,0,-118.28887,34.02482,0
+                </coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Home - Religious Center</name>
+            <Style>
+                <LineStyle>
+                    <color>fff8ff2e</color>
+                    <width>3</width>
+                </LineStyle>
+            </Style>
+            <LineString>
+                <extrude>1</extrude>
+                <tessellate>1</tessellate>
+                <coordinates>
+                    -118.28734,34.03275,0,-118.28489,34.0231,0
+                </coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark>
+            <name>Home - Annenburg</name>
+            <Style>
+                <LineStyle>
+                    <color>fff8ff2e</color>
+                    <width>3</width>
+                </LineStyle>
+            </Style>
+            <LineString>
+                <extrude>1</extrude>
+                <tessellate>1</tessellate>
+                <coordinates>
+                    -118.28734,34.03275,0,-118.2863,34.02182,0
+                </coordinates>
+            </LineString>
+        </Placemark>
     </Document>
 </kml>
