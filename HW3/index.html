@@ -16,12 +16,57 @@
 </head>
 
 <body>
-    <h2>Geospatial Data Handling</h2>
+    <h2  style="font-family: Arial, Helvetica, sans-serif; text-align: center;">Geospatial Data Handling</h2>
     <div id="map" class="map"></div>
     <script type="text/javascript">
+        if (typeof (Storage) !== "undefined") {
+            localStorage.setItem('leavey', '-118.28308, 34.02165');
+            localStorage.setItem('rossier', '-118.28392, 34.02192');
+            localStorage.setItem('doheny', '-118.28389, 34.02009');
+            localStorage.setItem('alumni', '-118.28598, 34.02006');
+            localStorage.setItem('ronald', '-118.28668, 34.02014');
+            localStorage.setItem('viterbi', '-118.28941, 34.01920');
+            localStorage.setItem('powell', '-118.28857, 34.01919');
+            localStorage.setItem('annenberg', '-118.28630, 34.02182');
+            localStorage.setItem('religious', '-118.28489, 34.02310');
+            localStorage.setItem('jefferson', '-118.28887, 34.02482');
+            localStorage.setItem('tommy', '-118.28543, 34.02054');
+            localStorage.setItem('target', '-118.28400, 34.02574');
+            localStorage.setItem('home', '-118.28734, 34.03275');
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+        }
 
-        localStorage.setItem('leavey', -118.28308, 34.02165);
-        console.log(localStorage.getItem('leavey'));
+        function getLonLat(key) {
+            var v1 = localStorage.getItem(key).split(', ')[0];
+            var v2 = localStorage.getItem(key).split(', ')[1];
+            let lonlat = [];
+            lonlat.push(v1);
+            lonlat.push(v2);
+            return lonlat;
+        }
+
+        var Style = new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 10],
+                anchorXUnits: 'fractions',
+                anchorYUnits: 'pixels',
+                src: 'data/location_icon.svg'
+            })
+        });
+
+        function createLayer(key) {
+            return new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: [
+                        new ol.Feature({
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat(getLonLat(key)))
+                        })
+                    ]
+                }),
+                style: Style
+            });
+        }
 
         var map = new ol.Map({
             target: 'map',
@@ -31,155 +76,26 @@
                 })
             ],
             view: new ol.View({
-                center: ol.proj.fromLonLat([-118.28308, 34.02165]),
-                zoom: 16
+                center: ol.proj.fromLonLat(getLonLat('leavey')),
+                zoom: 15
             })
         });
 
-        var leavey = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([parseInt(localStorage.getItem('leavey'))]))
-                    })
-                ]
-            })
-        });
-
-        var rossier = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28392, 34.02192]))
-                    })
-                ]
-            })
-        });
-
-        var doheny = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28389, 34.02009]))
-                    })
-                ]
-            })
-        });
-
-        var alumni = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28598, 34.02006]))
-                    })
-                ]
-            })
-        });
-
-        var ronald = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28668, 34.02014]))
-                    })
-                ]
-            })
-        });
-
-        var viterbi = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28941, 34.01920]))
-                    })
-                ]
-            })
-        });
-
-        var powell = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28857, 34.01919]))
-                    })
-                ]
-            })
-        });
-
-        var annenburg = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28630, 34.02182]))
-                    })
-                ]
-            })
-        });
-
-        var religious = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28489, 34.02310]))
-                    })
-                ]
-            })
-        });
-
-        var jefferson = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28887, 34.02482]))
-                    })
-                ]
-            })
-        });
-
-        var tommy = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28543, 34.02054]))
-                    })
-                ]
-            })
-        });
-
-        var target = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28400, 34.02574]))
-                    })
-                ]
-            })
-        });
-
-        var home = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: [
-                    new ol.Feature({
-                        geometry: new ol.geom.Point(ol.proj.fromLonLat([-118.28734, 34.03275]))
-                    })
-                ]
-            })
-        });
-
-        map.addLayer(leavey);
-        map.addLayer(rossier);
-        map.addLayer(doheny);
-        map.addLayer(alumni);
-        map.addLayer(ronald);
-        map.addLayer(viterbi);
-        map.addLayer(powell);
-        map.addLayer(annenburg);
-        map.addLayer(religious);
-        map.addLayer(jefferson);
-        map.addLayer(tommy);
-        map.addLayer(target);
-        map.addLayer(home);
+        map.addLayer(createLayer('leavey'));
+        map.addLayer(createLayer('rossier'));
+        map.addLayer(createLayer('doheny'));
+        map.addLayer(createLayer('alumni'));
+        map.addLayer(createLayer('ronald'));
+        map.addLayer(createLayer('viterbi'));
+        map.addLayer(createLayer('powell'));
+        map.addLayer(createLayer('annenberg'));
+        map.addLayer(createLayer('religious'));
+        map.addLayer(createLayer('jefferson'));
+        map.addLayer(createLayer('tommy'));
+        map.addLayer(createLayer('target'));
+        map.addLayer(createLayer('home'));
     </script>
+    <div id="result" class="result"></div>
 </body>
 
 </html>
