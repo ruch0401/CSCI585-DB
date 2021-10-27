@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <h2  style="font-family: Arial, Helvetica, sans-serif; text-align: center;">Geospatial Data Handling</h2>
+    <h2 style="font-family: Arial, Helvetica, sans-serif; text-align: center;">Geospatial Data Handling</h2>
     <div id="map" class="map"></div>
     <script type="text/javascript">
         if (typeof (Storage) !== "undefined") {
@@ -81,19 +81,9 @@
             })
         });
 
-        map.addLayer(createLayer('leavey'));
-        map.addLayer(createLayer('rossier'));
-        map.addLayer(createLayer('doheny'));
-        map.addLayer(createLayer('alumni'));
-        map.addLayer(createLayer('ronald'));
-        map.addLayer(createLayer('viterbi'));
-        map.addLayer(createLayer('powell'));
-        map.addLayer(createLayer('annenberg'));
-        map.addLayer(createLayer('religious'));
-        map.addLayer(createLayer('jefferson'));
-        map.addLayer(createLayer('tommy'));
-        map.addLayer(createLayer('target'));
-        map.addLayer(createLayer('home'));
+        const locations = ['leavey', 'rossier', 'doheny', 'alumni', 'ronald', 'viterbi', 'powell', 'annenberg', 'religious', 'jefferson', 'tommy', 'target', 'home'];
+        console.log(locations);
+        locations.forEach((x, i) => map.addLayer(createLayer(x)));
     </script>
     <div id="result" class="result"></div>
 </body>
