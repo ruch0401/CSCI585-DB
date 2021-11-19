@@ -49,11 +49,11 @@
         }
 
         var Style = new ol.style.Style({
-            image: new ol.style.Icon({
-                anchor: [0.5, 10],
-                anchorXUnits: 'fractions',
-                anchorYUnits: 'pixels',
-                src: 'data/location_icon.svg'
+            image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({
+                    color: '#000000'
+                })
             })
         });
 
