@@ -8,3 +8,4 @@
 - [HW2](HW2/README1.md) - SQL Queries
 - [HW3](HW3/README1.md) - Geospatial Data Handling
 - [HW4](HW4) - MongoDB
+- [HW5](HW5) - Machine Learning
