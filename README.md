@@ -9,3 +9,4 @@
 - [HW3](HW3/README1.md) - Geospatial Data Handling
 - [HW4](HW4) - MongoDB
 - [HW5](HW5) - Machine Learning
+- [Lectures + Exams](Lectures_Exams) - Notes, PPTs and Previous Year Question Papers
